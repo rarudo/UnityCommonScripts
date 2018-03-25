@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// RigitBodyに力を加える
+/// </summary>
 public class AddForcer : MonoBehaviour
 {
 	[SerializeField] private float _power = 10f;
