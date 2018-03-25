@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 任意のトルクを加える
+/// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class AddTorquer: MonoBehaviour
 {
