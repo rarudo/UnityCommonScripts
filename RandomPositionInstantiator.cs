@@ -24,6 +24,17 @@ public class RandomPositionInstantiator : MonoBehaviour {
 		var obj = InstantiateObj(prefab, startObj.transform.position, endObj.transform.position);
 		return obj;
 	}
+
+	public static GameObject[] InstantiateObjs(GameObject prefab, Vector3 posStart, Vector3 posEnd, int amount)
+	{
+		List<GameObject> objs = new List<GameObject>();
+		for (int i = 0; i < amount; i++)
+		{
+			objs.Add(InstantiateObj(prefab, posStart, posEnd));
+		}
+
+		return objs.ToArray();
+	}
 	
 	// Update is called once per frame
 	void Update () {
