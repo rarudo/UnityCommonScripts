@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Timer : MonoBehaviour
+public class TimeCounter : SingletonMonoBehaviour<TimeCounter>
 {
 	[SerializeField] private int _countFrom;
 	private int _count;
+	
+	//カウント終了時に呼ばれるイベント
+	public UnityEvent OnTimerEnded = new UnityEvent();
 
 	// Use this for initialization
 	void Start ()
@@ -18,13 +22,17 @@ public class Timer : MonoBehaviour
 	{
 		while (true)
 		{
+			if (_count < 0)
+				break;
 			_count--;
 			yield return new WaitForSecondsRealtime(1);
 		}
+		OnTimerEnded.Invoke();
+	}
+
+	public int GetCount()
+	{
+		return _count;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
