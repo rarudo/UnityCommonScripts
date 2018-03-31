@@ -15,7 +15,5 @@ public class DestroyerByHeight : MonoBehaviour
 	void Update () {
 		if(gameObject.transform.position.y < heigh)
 			Destroy(gameObject);
-		
-		
 	}
 }
