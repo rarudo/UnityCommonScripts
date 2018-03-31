@@ -12,10 +12,6 @@ public class WooWhaController :MonoBehaviour, ITouchable{
 
     // Use this for initialization
     void Start () {
-		
-    }
-	
-    void OnEnable(){
         GetComponent<TapGesture>().Tapped += tappedHandle;
     }
 	
