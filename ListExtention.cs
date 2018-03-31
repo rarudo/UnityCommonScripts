@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public static class ListExtention{
     /// <summary>
@@ -24,5 +25,33 @@ public static class ListExtention{
             startIndex = self.Count - getAmount;
         }
         return self.GetRange(startIndex, getAmount);
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="self"></param>
+    /// <param name="getAmount"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public static List<T> GetRandomPick<T>(this List<T> self, int getAmount)
+    {
+        int count = self.Count;
+        if (count < getAmount)
+        {
+            getAmount = count;
+        }
+        //TODO このままだとPickする値が重複する可能性がある
+        int[] pickIndex = new int[getAmount];
+        for (int i = 0; i < pickIndex.Length; i++)
+        {
+            pickIndex[i] = Random.Range(0, getAmount);
+        }
+        List<T> returnList = new List<T>();
+        foreach (var index in pickIndex)
+        {
+            returnList.Add(self[index]);
+        }
+        return returnList;
     }
 }
