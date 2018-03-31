@@ -15,6 +15,11 @@ public class WooWhaController :MonoBehaviour, ITouchable{
         GetComponent<TapGesture>().Tapped += tappedHandle;
     }
 
+    private void OnDestroy()
+    {
+        GetComponent<TapGesture>().Tapped -= tappedHandle;
+    }
+
     void tappedHandle(object sender, System.EventArgs e)
     {
         if (IsTouchableRange())
