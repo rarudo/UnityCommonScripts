@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TouchScript.Gestures;
 using UnityEngine;
 
-[RequireComponent(typeof(TapGesture))]
 public class WooWhaController :MonoBehaviour, ITouchable{
 
     //この距離以内だったらタップして反応する
@@ -15,9 +13,9 @@ public class WooWhaController :MonoBehaviour, ITouchable{
 		
     }
 	
-    void OnEnable(){
-        GetComponent<TapGesture>().Tapped += tappedHandle;
-    }
+ //   void OnEnable(){
+ //       GetComponent<TapGesture>().Tapped += tappedHandle;
+ //   }
 	
     void tappedHandle(object sender, System.EventArgs e)
     {
