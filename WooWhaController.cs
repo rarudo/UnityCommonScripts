@@ -11,6 +11,7 @@ public class WooWhaController :MonoBehaviour, ITouchable{
     private float _touchableLengh;
 
     private GameObject _hideObject;
+    private CharactorType _charactorType;
 
     // Use this for initialization
     void Start () {
@@ -20,6 +21,16 @@ public class WooWhaController :MonoBehaviour, ITouchable{
     private void OnDestroy()
     {
         GetComponent<TapGesture>().Tapped -= tappedHandle;
+    }
+
+    public void SetCharactorType(CharactorType ct)
+    {
+        _charactorType = ct;
+    }
+    
+    public CharactorType GetCharactorType()
+    {
+        return _charactorType;
     }
 
     /// <summary>
@@ -67,6 +78,7 @@ public class WooWhaController :MonoBehaviour, ITouchable{
     public void Touch()
     {
         print("見つかっちゃったby"+transform.name);
+        GameController.Instance.AddFindCharactor(_charactorType);
         Destroy(gameObject);
     }
 }
