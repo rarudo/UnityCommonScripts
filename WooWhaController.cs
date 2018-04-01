@@ -79,6 +79,13 @@ public class WooWhaController :MonoBehaviour, ITouchable{
     {
         print("見つかっちゃったby"+transform.name);
         GameController.Instance.AddFindCharactor(_charactorType);
+        if (_charactorType == CharactorType.Wha)
+        {
+            GameEvent.WarFound.Invoke();
+        }else if (_charactorType == CharactorType.Woo)
+        {
+            GameEvent.WooFound.Invoke();
+        }
         Destroy(gameObject);
     }
 }
