@@ -10,6 +10,8 @@ public class WooWhaController :MonoBehaviour, ITouchable{
     [SerializeField]
     private float _touchableLengh;
 
+    private GameObject _hideObject;
+
     // Use this for initialization
     void Start () {
         GetComponent<TapGesture>().Tapped += tappedHandle;
@@ -18,6 +20,24 @@ public class WooWhaController :MonoBehaviour, ITouchable{
     private void OnDestroy()
     {
         GetComponent<TapGesture>().Tapped -= tappedHandle;
+    }
+
+    /// <summary>
+    /// 隠れてる対象のオブジェクトをセットする
+    /// </summary>
+    public void SetHideObject(GameObject obj)
+    {
+        _hideObject = obj;
+    }
+
+    public GameObject GetHidObject()
+    {
+        if (_hideObject == null)
+        {
+            Debug.LogError("オブジェクトがセットされてないよ！！");
+        }
+
+        return _hideObject;
     }
 
     void tappedHandle(object sender, System.EventArgs e)
