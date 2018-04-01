@@ -45,7 +45,7 @@ public static class ListExtention{
         int[] pickIndex = new int[getAmount];
         for (int i = 0; i < pickIndex.Length; i++)
         {
-            pickIndex[i] = Random.Range(0, getAmount);
+            pickIndex[i] = Random.Range(0, pickIndex.Length);
         }
         List<T> returnList = new List<T>();
         foreach (var index in pickIndex)
